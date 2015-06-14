@@ -10,17 +10,18 @@ Route::post('contato/store', ['as' => 'contato.store', 'uses' => 'ContatoControl
 
 Route::group(['prefix' => 'usuario'], function()
 {
-    Route::get('resgistrar/', ['as' => 'usuario.create', 'uses' => 'UserController@create']);
-    Route::get('resgistrar/{id}', ['as' => 'usuario.create', 'uses' => 'UserController@create']);
-    Route::post('store', ['as' => 'usuario.store', 'uses' => 'UserController@store']);
-    Route::get('login', ['as' => 'usuario.login', 'uses' => 'UserController@login']);
-    Route::post('logar', ['as' => 'usuario.logar', 'uses' => 'UserController@logar']);
-    Route::get('confirmar/{hash}', ['as' => 'users.confirmar', 'uses' => 'UserController@confirmar']);
+    Route::get('resgistrar/', ['as' => 'usuario.create', 'uses' => 'UsuarioController@create']);
+    Route::get('resgistrar/{id}', ['as' => 'usuario.create', 'uses' => 'UsuarioController@create']);
+    Route::post('store', ['as' => 'usuario.store', 'uses' => 'UsuarioController@store']);
+    Route::get('login', ['as' => 'usuario.login', 'uses' => 'UsuarioController@login']);
+    Route::post('logar', ['as' => 'usuario.logar', 'uses' => 'UsuarioController@logar']);
+    Route::get('confirmar/{hash}', ['as' => 'users.confirmar', 'uses' => 'UsuarioController@confirmar']);
 });
 
 Route::post('newsletter', ['as' => 'newsletter.store', 'uses' => 'NewsletterController@store']);
 
-Route::get('auth/login', function(){
+Route::get('auth/login', function()
+{
     return redirect('usuario/login');
 });
 
@@ -30,4 +31,4 @@ Route::controllers([
     'password' => 'Auth\PasswordController',
 ]);
 
-Route::post('ajax/comboCidadePorEstado', 'AjaxController@comboCidadePorEstado');
+Route::post('ajax/comboCidadePorEstado', 'CidadeController@getComboDeCidadePorEstado');
