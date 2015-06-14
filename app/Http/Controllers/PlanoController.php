@@ -6,13 +6,15 @@ use Wempregada\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Wempregada\Plano;
 use Wempregada\Item;
+use Wempregada\Repositories\Eloquent\ItemRepository;
+use Wempregada\Repositories\Eloquent\PlanoRepository;
 
 class PlanoController extends Controller
 {
     private $plano;
     private $item;
 
-    public function __construct(Plano $plano, Item $item)
+    public function __construct(PlanoRepository $plano, ItemRepository $item)
     {
         $this->plano = $plano;
         $this->item = $item;
@@ -20,10 +22,8 @@ class PlanoController extends Controller
 
     public function index()
     {
-        $data = [];
-        $data['planos'] = $this->plano->allPlanos();
-        $data['items'] = $this->item->allItems();
-
-        return view('plano.index', $data);
+        $planos = $this->plano->getTodos();
+        $items  = $this->item->getTodos();
+        return view('plano.index', compact('planos', 'items'));
     }
 }

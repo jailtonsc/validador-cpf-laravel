@@ -4,7 +4,7 @@ interface RepositoryInterface
 {
     public function getTodos();
 
-    public function buscar($id);
+    public function buscar(array $params);
 
     public function salvar(array $data);
 

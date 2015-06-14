@@ -11,9 +11,15 @@ class AbstractRepository implements RepositoryInterface
         return $this->model->all();
     }
 
-    public function buscar($id)
+    public function buscar(array $params)
     {
-        return $this->model->find($id);
+        foreach ($params as $key => $value) {
+            if (!is_null($value) && $value != '') {
+                $this->model->while($key, '=', $value);
+            }
+        }
+
+        return $this->model->get();
     }
 
     public function salvar(array $data)
