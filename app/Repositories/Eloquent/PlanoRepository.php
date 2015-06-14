@@ -2,9 +2,9 @@
 
 use Wempregada\Plano;
 use Wempregada\Repositories\AbstractRepository;
-use Wempregada\Repositories\Contracts\FinanceiroRepositoryInterface;
+use Wempregada\Repositories\Contracts\PlanoRepositoryInterface;
 
-class PlanoRepository extends AbstractRepository implements FinanceiroRepositoryInterface
+class PlanoRepository extends AbstractRepository implements PlanoRepositoryInterface
 {
     /**
      * @param Plano $model

@@ -3,16 +3,16 @@
 namespace Wempregada\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Wempregada\Repositories\Eloquent\CidadeRepository;
+use Wempregada\Repositories\Contracts\CidadeRepositoryInterface;
 
 class CidadeController extends Controller
 {
     private $cidade;
 
     /**
-     * @param CidadeRepository $cidade
+     * @param CidadeRepositoryInterface $cidade
      */
-    public function __construct(CidadeRepository $cidade)
+    public function __construct(CidadeRepositoryInterface $cidade)
     {
         $this->cidade = $cidade;
     }

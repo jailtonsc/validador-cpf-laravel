@@ -1,20 +1,16 @@
 <?php namespace Wempregada\Http\Controllers;
 
 use Wempregada\Http\Requests;
-use Wempregada\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
-use Wempregada\Plano;
-use Wempregada\Item;
-use Wempregada\Repositories\Eloquent\ItemRepository;
-use Wempregada\Repositories\Eloquent\PlanoRepository;
+use Wempregada\Repositories\Contracts\ItemRepositoryInterface;
+use Wempregada\Repositories\Contracts\PlanoRepositoryInterface;
 
 class PlanoController extends Controller
 {
     private $plano;
     private $item;
 
-    public function __construct(PlanoRepository $plano, ItemRepository $item)
+    public function __construct(PlanoRepositoryInterface $plano, ItemRepositoryInterface $item)
     {
         $this->plano = $plano;
         $this->item = $item;
