@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Wempregada
+        psr4_prefix: Wempregada
+        src_path: app

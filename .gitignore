@@ -1,0 +1,12 @@
+/vendor
+/node_modules
+.env
+
+node_modules/
+.env.example
+.gitattributes
+.git/
+.idea/
+vendor/
+composer.lock
+npm-debug.log
