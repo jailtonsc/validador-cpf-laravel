@@ -2,9 +2,6 @@
 
 use Illuminate\Support\Facades\Mail;
 use Wempregada\Http\Requests;
-use Wempregada\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
 use Wempregada\Http\Requests\ContatoRequest;
 
 class ContatoController extends Controller

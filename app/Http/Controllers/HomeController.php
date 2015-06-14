@@ -1,41 +1,22 @@
 <?php namespace Wempregada\Http\Controllers;
 
-use Wempregada\Plano;
+use Wempregada\Repositories\Eloquent\PlanoRepository;
 
-class HomeController extends Controller {
+class HomeController extends Controller
+{
+    private $plano;
 
-	/*
-	|--------------------------------------------------------------------------
-	| Home Controller
-	|--------------------------------------------------------------------------
-	|
-	| This controller renders your application's "dashboard" for users that
-	| are authenticated. Of course, you are free to change or remove the
-	| controller as you wish. It is just here to get your app started!
-	|
-	*/
+    public function __construct(PlanoRepository $plano)
+    {
+        $this->plano = $plano;
+    }
 
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		//$this->middleware('auth');
-	}
-
-	/**
-	 * Show the application dashboard to the user.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-        $data = [];
-
-        $data['planos'] = Plano::all();
-		return view('home.index', $data);
-	}
-
+    /**
+     * @return Response
+     */
+    public function index()
+    {
+        $planos = $this->plano->getTodos();
+        return view('home.index', compact('planos'));
+    }
 }

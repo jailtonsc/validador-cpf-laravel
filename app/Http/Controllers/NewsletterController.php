@@ -1,28 +1,25 @@
 <?php namespace Wempregada\Http\Controllers;
 
 use Wempregada\Http\Requests;
-use Wempregada\Http\Controllers\Controller;
 
 use Wempregada\Http\Requests\NewsletterRequest;
-use Wempregada\Newsletter;
+use Wempregada\Repositories\Eloquent\NewsletterRepository;
 
 class NewsletterController extends Controller
 {
     private $newsletter;
 
-    public function __construct(Newsletter $newsletter)
+    public function __construct(NewsletterRepository $newsletter)
     {
         $this->newsletter = $newsletter;
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
      * @param NewsletterRequest $request
      * @return Response
      */
     public function store(NewsletterRequest $request)
     {
-        return $this->newsletter->create($request->all());
+        return $this->newsletter->salvar($request->all());
     }
 }

@@ -3,13 +3,10 @@
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-use Wempregada\Events\UsuarioCadastradoEvent;
-use Wempregada\Events\UsuarioConfirmadoEvent;
 use Wempregada\User;
 use Wempregada\Cidade;
 use Wempregada\Estado;
 use Wempregada\Http\Requests;
-use Wempregada\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 
 use Illuminate\Http\Request;
@@ -17,7 +14,7 @@ use Wempregada\Plano;
 use Wempregada\Sexo;
 use Wempregada\Http\Requests\UsersRequest;
 
-class UserController extends Controller
+class UsuarioController extends Controller
 {
 
     public function create(Request $request, Plano $plano, Estado $estado, Cidade $cidade, Sexo $sexo)
