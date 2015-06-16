@@ -10,11 +10,8 @@
     <meta name="description" content="">
     <meta name="author" content="Jailton S. C.">
 
-    <!-- Bootstrap CSS -->
-    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+    <!-- Todos os CSS -->
+    <link href="{{ asset('css/all.css') }}" rel="stylesheet">
 
     <!-- Plugins required on all pages NOTE: Additional non-required plugins are loaded ondemand as of AppStrap 2.5 -->
     <!-- Plugin: animate.css (animated effects) - http://daneden.github.io/animate.css/ -->
@@ -22,14 +19,8 @@
     <!-- @LINEBREAK  Plugin: flag icons - http://lipis.github.io/flag-icon-css/ -->
     <link href="{{ asset('plugins/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet">
 
-    <!-- Theme style -->
-    <link href="{{ asset('css/theme-style.min.css') }}" rel="stylesheet">
-
     <!--Your custom colour override-->
     <link href="#" id="colour-scheme" rel="stylesheet">
-
-    <!-- Your custom override -->
-    <link href="{{ asset('css/custom-style.css') }}" rel="stylesheet">
 
     <!-- HTML5 shiv & respond.js for IE6-8 support of HTML5 elements & media queries -->
     <!--[if lt IE 9]>
@@ -38,7 +29,7 @@
     <![endif]-->
 
     <!-- Le fav and touch icons - @todo: fill with your icons or remove -->
-    <link rel="shortcut icon" href="{{ asset('img/icons/favicon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('img/icons/114x114.png') }}">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('img/icons/72x72.png') }}">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('img/icons/default.png') }}">
@@ -184,9 +175,7 @@
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <!-- JS plugins required on all pages NOTE: Additional non-required plugins are loaded ondemand as of AppStrap 2.5 -->
 <!--Custom scripts mainly used to trigger libraries/plugins -->
-<script src="{{ asset('js/script.js') }}"></script>
-<script src="{{ asset('js/meiomask_modificado.js') }}"></script>
 <script src="{{ asset('js/validator.min.js') }}"></script>
-<script src="{{ asset('js/functions.js') }}"></script>
+<script src="{{ asset('js/all.js') }}"></script>
 </body>
 </html>
