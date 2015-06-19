@@ -23,3 +23,5 @@ class NewsletterController extends Controller
         return $this->newsletter->salvar($request->all());
     }
 }
+
+

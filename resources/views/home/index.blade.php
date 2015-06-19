@@ -111,16 +111,13 @@
                                 </p>
                                 <ul class="unstyled points">
                                 @foreach($plano->planoItems as $itens)
-                                    <?php
-                                    if(is_null($itens->quantidade)){
-                                        $quantidade = 'Ilimitado';
-                                    } elseif($itens->quantidade > 0){
-                                        $quantidade = $itens->quantidade;
-                                    } else {
-                                        $quantidade = '';
-                                    }
-                                    ?>
-                                    <li>{{$quantidade . ' '. $itens->item->nome}}</li>
+                                    @if (is_null($itens->quantidade))
+                                        <li>Ilimitado {{ $itens->item->nome }}</li>
+                                    @elseif($itens->quantidade > 0)
+                                        <li>{{ $itens->quantidade . ' '. $itens->item->nome }}</li>
+                                    @else
+                                        <li>{{ $itens->item->nome }}</li>
+                                    @endif
                                 @endforeach
                                 </ul>
                                 <a href="{{url('usuario/resgistrar', [$plano->id])}}" class="btn btn-primary">Contratar</a>
