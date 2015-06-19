@@ -31,6 +31,7 @@
                             </li>
                             <?php $i = 0;
                             foreach($plano->planoItems as $planoItem){
+
                                 if ($planoItem->quantidade>0){
                                     $descricao = $planoItem->quantidade;
                                 } elseif (is_null($planoItem->quantidade)){
