@@ -4,21 +4,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sexo extends Model
 {
-	protected $table = 'sexo';
+    protected $table = 'sexo';
+    public $timestamps = false;
 
     /**
      * Relacionamentos
      */
-    public function user()
+    public function usuario()
     {
-        return $this->belongsTo('Wempregada\User');
-    }
-
-    /**
-     * Diversos tipos de select
-     */
-    public function allSexos()
-    {
-        return $this->orderBy('nome')->get();
+        return $this->belongsTo('Wempregada\Usuario');
     }
 }

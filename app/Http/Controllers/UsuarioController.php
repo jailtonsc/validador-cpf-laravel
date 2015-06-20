@@ -1,56 +1,59 @@
 <?php namespace Wempregada\Http\Controllers;
 
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-use Wempregada\User;
-use Wempregada\Cidade;
-use Wempregada\Estado;
 use Wempregada\Http\Requests;
-use Illuminate\Contracts\Auth\Guard;
-
-use Illuminate\Http\Request;
-use Wempregada\Plano;
-use Wempregada\Sexo;
-use Wempregada\Http\Requests\UsersRequest;
+use Wempregada\Http\Requests\UsuarioRequest;
+use Wempregada\Repositories\Contracts\CidadeRepositoryInterface;
+use Wempregada\Repositories\Contracts\EstadoRepositoryInterface;
+use Wempregada\Repositories\Contracts\PlanoRepositoryInterface;
+use Wempregada\Repositories\Contracts\SexoRepositoryInterface;
+use Wempregada\Repositories\Contracts\UsuarioRepositoryInterface;
 
 class UsuarioController extends Controller
 {
+    private $usuario;
 
-    public function create(Request $request, Plano $plano, Estado $estado, Cidade $cidade, Sexo $sexo)
+    public function __construct(UsuarioRepositoryInterface $usuario)
     {
-        $data = [];
-
-        $data['planoId'] = null;
-        //Caso a url tenha vindo do link de um plano
-        if ($request->segment(3)) {
-            $data['planoId'] = $request->segment(3);
-        }
-
-        //Todos os combobox do formulario
-        $data['comboCidades'] = [];
-        $data['comboPlanos'] = $plano->allPlanos()->lists('nome', 'id');
-        $data['comboEstados'] = $estado->allEstados()->lists('nome', 'id');
-        $data['comboSexos'] = $sexo->allSexos()->lists('nome', 'id');
-
-        if (Session::has('_old_input')) {
-            $data['comboCidades'] = $cidade->allCidades(
-                [
-                    'estado_id' => Session::get('_old_input')['estado_id']
-                ]
-            )->lists('nome', 'id');
-        }
-
-        return view('auth.register', $data);
+        $this->usuario = $usuario;
     }
 
-    public function store(UsersRequest $request, User $user)
+    public function create(Request $request, PlanoRepositoryInterface $plano, EstadoRepositoryInterface $estado, CidadeRepositoryInterface $cidade, SexoRepositoryInterface $sexo)
+    {
+        $planoId = null;
+
+        /** Caso a url tenha vindo do link de um plano */
+        if ($request->segment(3)) {
+            $planoId = $request->segment(3);
+        }
+
+        /**  Todos os combobox do formulario */
+        $comboCidades = [];
+        $comboPlanos = $plano->getCombo();
+        $comboEstados = $estado->getCombo();
+        $comboSexos = $sexo->getCombo();
+
+        if (Session::has('_old_input')) {
+            $comboCidades = $cidade->combo(Session::get('_old_input')['estado_id']);
+        }
+
+        return view(
+            'usuario.register',
+            compact('planoId', 'comboCidades', 'comboPlanos', 'comboEstados', 'comboSexos')
+        );
+    }
+
+    public function store(UsuarioRequest $request)
     {
         $request['senha'] = Hash::make($request['senha']);
-        $user = $user->create($request->all());
+        $user = $this->usuario->salvar($request->all());
 
         //Dispara o evento
-        Event::fire(new UsuarioCadastradoEvent($user));
+        //Event::fire(new UsuarioCadastradoEvent($user));
 
         return redirect('usuario/resgistrar')
             ->with('sucesso', 'Cadastro efetuado com sucesso. <br />Verifique o seu e-mail e siga as orientações para finalização do cadastro.');
