@@ -21,12 +21,4 @@ class Plano extends Model
     {
         return $this->hasMany('Wempregada\PlanoItem');
     }
-
-    public function allPlanos(){
-        $planos = $this->all();
-        $planos->load(['planoItems' => function($query) {
-            $query->orderBy('item_id');
-        }]);
-        return $planos;
-    }
 }

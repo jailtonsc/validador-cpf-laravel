@@ -3,6 +3,7 @@
 namespace Wempregada\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Wempregada\Repositories\Contracts\CidadeRepositoryInterface;
 
 class CidadeController extends Controller
@@ -23,7 +24,6 @@ class CidadeController extends Controller
      */
     public function getComboDeCidadePorEstado(Request $request)
     {
-        return $this->cidade->buscar(['estado_id' => $request['valor']])
-            ->list('nome', 'id');
+        return Response::json($this->cidade->combo($request['valor']));
     }
 }

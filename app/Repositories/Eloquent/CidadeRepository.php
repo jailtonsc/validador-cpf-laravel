@@ -14,4 +14,13 @@ class CidadeRepository extends AbstractRepository implements CidadeRepositoryInt
         /** @var Cidade $model */
         $this->model = $model;
     }
+
+    /**
+     * @param Int $estadoId
+     * @return Model
+     */
+    public function combo($estadoId)
+    {
+        return $this->model->where('estado_id', '=', $estadoId)->get(['id', 'nome'])->lists('nome', 'id')->toArray();
+    }
 }

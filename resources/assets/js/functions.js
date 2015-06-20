@@ -63,8 +63,8 @@ $(document).ready(function () {
             comboDestino.html('<option value="">Carregando...</option>');
             $.post(url, {valor: estado, _token: $('input[name="_token"]').val()}, function (data) {
                 comboDestino.html('<option value="">Selecione um Registro</option>');
-                $.each(data, function (item, obj) {
-                    comboDestino.append($("<option />").val(obj.id).text(obj.nome));
+                $.each(data, function (index, value) {
+                    comboDestino.append($("<option />").val(index).text(value));
                 });
             });
         }).on('click', '.newsletter_salvar', function (){
