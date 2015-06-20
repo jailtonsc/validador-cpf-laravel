@@ -3,9 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNewslettersTable extends Migration
+class CreateEstadoTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -13,10 +12,10 @@ class CreateNewslettersTable extends Migration
      */
     public function up()
     {
-        Schema::create('newsletter', function (Blueprint $table) {
+        Schema::create('estado', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email', 200)->unique();
-            $table->timestamps();
+            $table->string('nome', 75);
+            $table->char('uf', '2');
         });
     }
 
@@ -27,7 +26,6 @@ class CreateNewslettersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('newsletter');
+        Schema::drop('estado');
     }
-
 }
