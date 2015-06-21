@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layout.master')
 
 @section('content')
     <div id="content">
