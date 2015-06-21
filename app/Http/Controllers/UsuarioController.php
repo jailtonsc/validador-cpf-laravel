@@ -59,41 +59,6 @@ class UsuarioController extends Controller
             ->with('sucesso', 'Cadastro efetuado com sucesso. <br />Verifique o seu e-mail e siga as orientações para finalização do cadastro.');
     }
 
-    public function login(Guard $auth)
-    {
-        //Se o usaurio selecionou a opção de relembrar a senha
-        //Faz o redirecionamento para pagina de logado
-        if ($auth->check()) {
-            if ($auth->viaRemember()) {
-                return redirect('cliente')->with('rememberMe', 1);
-            } else {
-                return redirect('cliente');
-            }
-        }
-
-        return view('auth.login');
-    }
-
-    public function logar(Guard $auth, Request $request)
-    {
-        $this->validate($request, [
-            'login' => 'required', 'senha' => 'required',
-        ]);
-        $request['password'] = $request['senha'];
-        $credentials = $request->only('login', 'password');
-        $credentials['ativo'] = true;
-        if ($auth->attempt($credentials, $request->has('remember'))) {
-            return redirect('cliente');
-        }
-
-        return redirect('/usuario/login')
-            ->withInput($request->only('login', 'remember'))
-            ->withErrors([
-                'login' => 'Login/Senha inválida!',
-            ]);
-    }
-
-
     public function confirmar(User $user, $hash)
     {
         $id = base64_decode($hash);

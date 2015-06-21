@@ -1,10 +1,10 @@
-@extends('app')
+@extends('layout.master')
 
 @section('content')
     <div id="content">
         <div class="container">
             <h2 class="title-divider">
-                <span>login</span>
+                <span>Login</span>
             </h2>
 
             <div class="panel-body">
@@ -18,18 +18,18 @@
                         </ul>
                     </div>
                 @endif
-                {!! Form::open(['url'=>'usuario/logar', 'class' => 'form-horizontal', 'role' => 'form', 'id' => 'form']) !!}
+                {!! Form::open(['url' => '/auth/login', 'class' => 'form-horizontal', 'role' => 'form', 'id' => 'form']) !!}
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="login">Login</label>
+                        <label class="col-md-4 control-label" for="login">E-mail</label>
                         <div class="col-md-6">
-                            {!! Form::text('login', null, ['id' => 'login', 'class' => 'form-control', 'required' => 'required']) !!}
+                            {!! Form::email('email', null, ['id' => 'email', 'class' => 'form-control', 'required' => 'required']) !!}
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="senha">Senha</label>
+                        <label class="col-md-4 control-label" for="password">Senha</label>
                         <div class="col-md-6">
-                            {!! Form::password('senha', ['id' => 'senha', 'class' => 'form-control', 'required' => 'required']) !!}
+                            {!! Form::password('password', ['id' => 'password', 'class' => 'form-control', 'required' => 'required']) !!}
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>

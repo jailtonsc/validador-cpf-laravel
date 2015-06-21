@@ -87,8 +87,8 @@
 
                 <!--user menu-->
                 <div class="btn-group user-menu pull-right">
-                    <a href="{{ url('/usuario/resgistrar') }}" class="btn btn-primary signup" data-toggle="modal">Cadastro</a>
-                    <a href="{{ url('usuario/login') }}" class="btn btn-primary dropdown-toggle login" data-toggle="modal">Login</a>
+                    <a href="{{ route('usuario.create') }}" class="btn btn-primary signup" data-toggle="modal">Cadastro</a>
+                    <a href="{{ url('auth/login') }}" class="btn btn-primary dropdown-toggle login" data-toggle="modal">Login</a>
                 </div>
 
                 <!--everything within this div is collapsed on mobile-->
@@ -96,13 +96,13 @@
                     <!--main navigation-->
                     <ul class="nav navbar-nav">
                         <li class="home-link">
-                            <a href="{{url('home')}}"><i class="fa fa-home"></i><span class="hidden">Home</span></a>
+                            <a href="{{route('home.index')}}"><i class="fa fa-home"></i><span class="hidden">Home</span></a>
                         </li>
                         <li class="dropdown">
-                            <a href="{{url('plano')}}" class="dropdown-toggle" id="pages-drop" data-hover="dropdown">Planos</a>
+                            <a href="{{route('plano.index')}}" class="dropdown-toggle" id="pages-drop" data-hover="dropdown">Planos</a>
                         </li>
                         <li class="dropdown">
-                            <a href="{{url('contato')}}" class="dropdown-toggle" id="blog-drop" data-hover="dropdown">Contato</a>
+                            <a href="{{route('contato.index')}}" class="dropdown-toggle" id="blog-drop" data-hover="dropdown">Contato</a>
                         </li>
                     </ul>
                 </div>
@@ -113,6 +113,7 @@
 </div>
 
 @yield('content')
+
 <!-- FOOTER -->
 <!-- ======== @Region: #footer ======== -->
 <footer id="footer">
@@ -177,5 +178,8 @@
 <!--Custom scripts mainly used to trigger libraries/plugins -->
 <script src="{{ asset('js/validator.min.js') }}"></script>
 <script src="{{ asset('js/all.js') }}"></script>
+
+@yield('script')
+
 </body>
 </html>
