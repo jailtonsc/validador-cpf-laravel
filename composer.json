@@ -1,0 +1,16 @@
+{
+    "name": "jailtonsc/validador-cpf-laravel",
+    "description": "Validador de cpf com suporte para laravel 5.*",
+    "keywords": ["laravel", "Cpf"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jailton S. C.",
+            "email": "jailton.dos.santos.cruz@gmail.com"
+        }
+    ],
+    "require": {
+      "php": ">=5.5.9",
+      "laravelcollective/html": "5.1.*"
+    }
+}
