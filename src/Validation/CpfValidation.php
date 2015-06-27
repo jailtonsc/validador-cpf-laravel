@@ -8,14 +8,14 @@ use Illuminate\Validation\Validator as IlluminateValidator;
  * Class Cpf
  * @package Util\Services\Validation
  */
-class Cpf extends IlluminateValidator
+class CpfValidation extends IlluminateValidator
 {
 
     /**
      * @var array
      */
     private $_custom_messages = [
-        "cpf" => "The :attribute may only contain letters, spaces, and dashes."
+        "cpf" => "CPF inválido."
     ];
 
     /**
@@ -126,6 +126,10 @@ class Cpf extends IlluminateValidator
         return $todos_iguais;
     }
 
+    public function removerCaracteres($value){
+        return str_replace(['.', '-'], '', $value);
+    }
+
     /**
      * @param $attribute
      * @param $value
@@ -133,6 +137,9 @@ class Cpf extends IlluminateValidator
      */
     public function validateCpf($attribute, $value)
     {
+        //remove os caracteres do cpf
+        $value = $this->removerCaracteres($value);
+
         // Captura os 9 primeiros dígitos do CPF
         // Ex.: 02546288423 = 025462884
         $digitos = substr($value, 0, 9);

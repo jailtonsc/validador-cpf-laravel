@@ -3,7 +3,7 @@
 namespace ValidadorCpf;
 
 use Illuminate\Support\ServiceProvider;
-use ValidadorCpf\Validation\Cpf;
+use ValidadorCpf\Validation\CpfValidation;
 
 class CpfServiceProvider extends ServiceProvider
 {
@@ -14,8 +14,14 @@ class CpfServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        /*
+        $this->publishes([
+            __DIR__.'/config/config.php' => config_path('cpf.php'),
+        ]);*/
+
+
         $this->app->validator->resolver( function( $translator, $data, $rules, $messages = array(), $customAttributes = array() ) {
-            return new Cpf( $translator, $data, $rules, $messages, $customAttributes );
+            return new CpfValidation( $translator, $data, $rules, $messages, $customAttributes );
         } );
     }
 
