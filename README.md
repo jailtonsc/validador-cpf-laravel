@@ -1,4 +1,5 @@
-# validador-cpf-laravel
+#README
+
 Validador de cpf com suporte para laravel 5.*
 
 #Composer Instalação
@@ -10,7 +11,6 @@ composer require jailtonsc/validador-cpf-laravel
 No arquivo config/app.php em providers coloque
 
 ValidadorCpf\CpfServiceProvider::class
-
 
 #Modo de usar exemplo
 
@@ -50,6 +50,4 @@ ou
 $this->validate($request, [
         'cpf' => 'cpf',
     ]);
-
-
 
