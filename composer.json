@@ -11,14 +11,10 @@
     ],
     "require": {
       "php": ">=5.5.9"
-<<<<<<< HEAD
     },
    "autoload": {
-      "psr-4": {
-          "ValidadorCpf\\": "src/"
-      }
+     "psr-4": {
+       "ValidadorCpf\\": "src/"
+     }
    }
-=======
-    }
->>>>>>> release/versao_1
 }
