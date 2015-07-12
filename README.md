@@ -16,6 +16,7 @@ ValidadorCpf\CpfServiceProvider::class
 
 php artisan vendor:publish
 
+
 ##Modo de usar exemplo
 
 namespace App\Http\Requests;
