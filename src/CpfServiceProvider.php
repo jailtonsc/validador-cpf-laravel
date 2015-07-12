@@ -14,10 +14,10 @@ class CpfServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        /*
+
         $this->publishes([
             __DIR__.'/config/config.php' => config_path('cpf.php'),
-        ]);*/
+        ]);
 
 
         $this->app->validator->resolver( function( $translator, $data, $rules, $messages = array(), $customAttributes = array() ) {

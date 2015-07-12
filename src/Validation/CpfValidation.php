@@ -2,6 +2,8 @@
 
 namespace ValidadorCpf\Validation;
 
+use Illuminate\Container\Container;
+use Illuminate\Support\Facades\App;
 use Illuminate\Validation\Validator as IlluminateValidator;
 
 /**
@@ -14,9 +16,7 @@ class CpfValidation extends IlluminateValidator
     /**
      * @var array
      */
-    private $_custom_messages = [
-        "cpf" => "CPF inválido."
-    ];
+    private $_custom_messages;
 
     /**
      * @param \Symfony\Component\Translation\TranslatorInterface $translator
@@ -29,8 +29,26 @@ class CpfValidation extends IlluminateValidator
     {
         parent::__construct($translator, $data, $rules, $messages, $customAttributes);
 
+        $this->setMessage();
         $this->_set_custom_stuff();
     }
+
+    /**
+     * @return mixed
+     */
+    public function app()
+    {
+        return Container::getInstance()->make('config');
+    }
+
+    /**
+     * @return void
+     */
+    public function setMessage()
+    {
+        $this->_custom_messages = ['cpf' =>  $this->app()->get('cpf.message')];
+    }
+
 
     /**
      * Setup any customizations etc
@@ -126,6 +144,10 @@ class CpfValidation extends IlluminateValidator
         return $todos_iguais;
     }
 
+    /**
+     * @param $value
+     * @return mixed
+     */
     public function removerCaracteres($value){
         return str_replace(['.', '-'], '', $value);
     }
