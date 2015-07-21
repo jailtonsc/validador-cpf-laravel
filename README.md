@@ -10,15 +10,19 @@ composer require jailtonsc/validador-cpf-laravel
 
 No arquivo config/app.php em providers coloque
 
+```php
 ValidadorCpf\CpfServiceProvider::class
+```
 
 ##publish
 
+```php
 php artisan vendor:publish
-
+```
 
 ##Modo de usar exemplo
 
+```php
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
@@ -47,12 +51,12 @@ class ArquivoRequest extends Request
         ];
     }
 }
-
+```
 
 ou
 
-
+```php
 $this->validate($request, [
-        'cpf' => 'cpf',
-    ]);
-
+    'cpf' => 'cpf',
+]);
+```
