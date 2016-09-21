@@ -2,6 +2,10 @@
 
 Validador de cpf com suporte para laravel 5.*
 
+[![Total Downloads](https://poser.pugx.org/jailtonsc/validador-cpf-laravel/d/total.svg)](https://packagist.org/packages/jailtonsc/validador-cpf-laravel)
+[![Latest Stable Version](https://poser.pugx.org/jailtonsc/validador-cpf-laravel/v/stable.svg)](https://packagist.org/packages/jailtonsc/validador-cpf-laravel)
+[![Latest Unstable Version](https://poser.pugx.org/jailtonsc/validador-cpf-laravel/v/unstable.svg)](https://packagist.org/packages/jailtonsc/validador-cpf-laravel)
+
 ##Composer Instalação
 
 composer require jailtonsc/validador-cpf-laravel
