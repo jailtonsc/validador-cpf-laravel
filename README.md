@@ -12,10 +12,18 @@ composer require jailtonsc/validador-cpf-laravel
 
 ##Integração com o Laravel
 
-No arquivo config/app.php em providers coloque
+No arquivo config/app.php coloque em providers a classe
 
 ```php
 ValidadorCpf\CpfServiceProvider::class
+```
+
+##Integração com o Laravel 5.4.*
+
+No arquivo config/app.php coloque em providers a classe
+
+```php
+ValidadorCpf\CpfServiceProvider54::class
 ```
 
 ##publish
@@ -23,6 +31,11 @@ ValidadorCpf\CpfServiceProvider::class
 ```php
 php artisan vendor:publish
 ```
+
+##Alterar a mensagem de erro
+
+No arquivo config/cpf.php você pode mudar a mensagem de erro
+
 
 ##Modo de usar exemplo
 
