@@ -87,7 +87,7 @@ class CpfValidation54
      * @return mixed
      */
     private function removerCaracteres($value){
-        return str_replace(['.', '-'], '', $value);
+        return str_replace(['.', '-', '_'], '', $value);
     }
 
     /**
